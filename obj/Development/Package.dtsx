@@ -1,0 +1,2475 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/28/2025 7:37:01 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="EFEDCPBI01"
+  DTS:CreatorName="EFEKTO\IOCO_1"
+  DTS:DTSID="{0CCCA3FE-18D9-4532-B08A-85770E534BEC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="7177"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="46"
+  DTS:VersionGUID="{63F793BB-B81A-40D3-BAC5-69448B682111}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CData Connect Connection Manager]"
+      DTS:CreationName="CDATA_CONNECT"
+      DTS:DTSID="{EAC55866-6EDA-4A98-BF33-0694FD409B9C}"
+      DTS:ObjectName="CData Connect Connection Manager">
+      <DTS:ObjectData>
+        <ConnectConnectionManager
+          ConnectByProxy="False">
+          <Property
+            Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPhMinj4WXEiec7K7cs+fmwAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAACFRRYlcfNEaP22RdFyoz/BAAAAAASAAACgAAAAEAAAANiZoAGzsWgeDzTb0Vl8mPEYAAAAIyzrtOs2xAFJ7sI5ERnVS5kamY5HSH+BFAAAAG2hRqbu1YkLGyqABrcsaj33igSY</Property>
+          <Property
+            Name="ConnectionString">auth scheme=OAuth;client jwt cert type=USER;client jwt validity time=3600;firewall port=0;firewall type=NONE;initiate oauth=GETANDREFRESH;logfile="C:\Users\IOCO_1\OneDrive - AgroServe Pty Ltd\Desktop\Cdata Logs\Limit 1000.txt";max log file count=-1;max log file size=100MB;max rows=-1;max rows timeout=30;oauth settings location="%APPDATA%\CData\Connect Data Provider\OAuthSettings.txt";proxy auth scheme=BASIC;proxy auto detect=True;proxy port=80;proxy ssl type=AUTO;query passthrough=True;rtk='';stream max rows=5000;timeout=60;url=https://cloud.cdata.com/api;user=nassau.carstens@agroserve.co.za;use stream mode=True;verbosity=3</Property>
+        </ConnectConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[EFEDCPASTEL01.Agro-Serve_TripSheet_SSAS]"
+      DTS:CreationName="MSOLAP100"
+      DTS:DTSID="{64CA8A11-578F-4891-89AC-E97F2229527D}"
+      DTS:ObjectName="EFEDCPASTEL01.Agro-Serve_TripSheet_SSAS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Data Source=EFEDCPASTEL01;Initial Catalog=Agro-Serve_TripSheet_SSAS;Provider=MSOLAP.8;Integrated Security=SSPI;Impersonation Level=Impersonate;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[efedcpastel01.AS_BI_Warehouse]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{F96E6017-86AB-4B53-92BF-085F722E8D88}"
+      DTS:ObjectName="efedcpastel01.AS_BI_Warehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=efedcpastel01;Initial Catalog=AS_BI_Warehouse;Integrated Security=True;Encrypt=False;Application Name=SSIS-Package-{F96E6017-86AB-4B53-92BF-085F722E8D88}efedcpastel01.AS_BI_Warehouse;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[efedcpastel01.AS_BI_Warehouse2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3476643F-CA34-412A-B393-B1DF2AE5CDE4}"
+      DTS:ObjectName="efedcpastel01.AS_BI_Warehouse2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=efedcpastel01;Initial Catalog=AS_BI_Warehouse;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{3476643F-CA34-412A-B393-B1DF2AE5CDE4}efedcpastel01.AS_BI_Warehouse2;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Analysis Services Processing Task"
+      DTS:CreationName="Microsoft.DTSProcessingTask"
+      DTS:Description="Analysis Services Processing Task"
+      DTS:DTSID="{CEC6B7A8-5BFE-4979-A799-BCC6364995AD}"
+      DTS:ExecutableType="Microsoft.DTSProcessingTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Analysis Services Processing Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ASProcessingData
+          ConnectionName="EFEDCPASTEL01.Agro-Serve_TripSheet_SSAS"
+          ProcessingCommands="{&#xA;  &quot;sequence&quot;: {&#xA;    &quot;operations&quot;: [&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;automatic&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;Agro-Serve_TripSheet_SSAS&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;automatic&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;Agro-Serve_TripSheet_SSAS&quot;,&#xA;              &quot;table&quot;: &quot;Tripsheet Invoices&quot;,&#xA;              &quot;partition&quot;: &quot;Tripsheet Invoices&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      },&#xA;      {&#xA;        &quot;refresh&quot;: {&#xA;          &quot;type&quot;: &quot;automatic&quot;,&#xA;          &quot;objects&quot;: [&#xA;            {&#xA;              &quot;database&quot;: &quot;Agro-Serve_TripSheet_SSAS&quot;,&#xA;              &quot;table&quot;: &quot;Tripsheet Invoices&quot;&#xA;            }&#xA;          ]&#xA;        }&#xA;      }&#xA;    ]&#xA;  }&#xA;}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{6954BB62-709C-4E2A-A598-2A36C4BCA98B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."Tripsheet Invoices"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[efedcpastel01.AS_BI_Warehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[efedcpastel01.AS_BI_Warehouse]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[WHENCREATED]"
+                      cachedDataType="dbDate"
+                      cachedName="WHENCREATED"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Invoice Date]"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[WHENCREATED]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DOCNO]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DOCNO"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Invoice Number]"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[DOCNO]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[CONTACTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="CONTACTNAME"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Customer Name]"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[CONTACTNAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DOCPARID]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DOCPARID"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Doc Type]"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[DOCPARID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="NAME"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Warehouse]"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[DELIVERY_ROUTE]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DELIVERY_ROUTE"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Delivery Route]"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[DELIVERY_ROUTE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[UIVALUE]"
+                      cachedDataType="r8"
+                      cachedName="UIVALUE"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Sales excl.]"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[UIVALUE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Invoice Date]"
+                      dataType="dbTimeStamp"
+                      name="Invoice Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Invoice Number]"
+                      dataType="wstr"
+                      length="2000"
+                      name="Invoice Number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Customer Name]"
+                      dataType="wstr"
+                      length="2000"
+                      name="Customer Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Doc Type]"
+                      dataType="wstr"
+                      length="2000"
+                      name="Doc Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Warehouse]"
+                      dataType="wstr"
+                      length="2000"
+                      name="Warehouse" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Delivery Route]"
+                      dataType="wstr"
+                      length="2000"
+                      name="Delivery Route" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[Sales excl.]"
+                      dataType="r8"
+                      name="Sales excl." />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Aggregate 1"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate 1"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Aggregate 1.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Inputs[Aggregate Input 1].Columns[DOCNO]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DOCNO"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[DOCNO]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Inputs[Aggregate Input 1].Columns[UIVALUE]"
+                      cachedDataType="r8"
+                      cachedName="UIVALUE"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[UIVALUE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Inputs[Aggregate Input 1].Columns[DELIVERY_ROUTE]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DELIVERY_ROUTE"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[DELIVERY_ROUTE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Inputs[Aggregate Input 1].Columns[CONTACTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="CONTACTNAME"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[CONTACTNAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Inputs[Aggregate Input 1].Columns[NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="NAME"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Inputs[Aggregate Input 1].Columns[DOCPARID]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DOCPARID"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[DOCPARID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Inputs[Aggregate Input 1].Columns[WHENCREATED]"
+                      cachedDataType="dbDate"
+                      cachedName="WHENCREATED"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[WHENCREATED]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[DOCNO]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[DOCNO]"
+                      name="DOCNO">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[DOCNO]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[UIVALUE]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[UIVALUE]"
+                      name="UIVALUE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[UIVALUE]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[DELIVERY_ROUTE]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[DELIVERY_ROUTE]"
+                      name="DELIVERY_ROUTE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[DELIVERY_ROUTE]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[CONTACTNAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[CONTACTNAME]"
+                      name="CONTACTNAME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[CONTACTNAME]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[NAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[NAME]"
+                      name="NAME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[NAME]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[DOCPARID]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[DOCPARID]"
+                      name="DOCPARID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[DOCPARID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[WHENCREATED]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[WHENCREATED]"
+                      name="WHENCREATED">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[WHENCREATED]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\CData Connect Source 2"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="support@cdata.com"
+              description="The CData Connect Source easily extracts data from Connect."
+              name="CData Connect Source 2"
+              usesDispositions="true"
+              version="24">
+              <properties>
+                <property
+                  dataType="System.Null"
+                  expressionType="Notify"
+                  name="SQLStatement"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+                <property
+                  dataType="System.Int32"
+                  name="AccessMode"
+                  typeConverter="CData.SSIS.Connect.AccessModeToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="TableOrView"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">[SageIntacctLive].[SageIntacct].[Tripsheet Info]</property>
+                <property
+                  dataType="System.Boolean"
+                  name="ExecStoredProcedure">false</property>
+                <property
+                  dataType="System.String"
+                  name="ParameterMapping"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether it will output the string value using Unicode. If true, the data type is DT_WSTR, or the data type is DT_STR."
+                  expressionType="Notify"
+                  name="UseUnicodeString">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">CData.SSIS.Connect.ConnectSource</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\CData Connect Source 2.Connections[CData Connect 2024 Connection]"
+                  connectionManagerID="Package.ConnectionManagers[CData Connect Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[CData Connect Connection Manager]"
+                  description="Use the CData Connect 2024 Connection to connect to Connect."
+                  name="CData Connect 2024 Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output]"
+                  name="CData Connect Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[DOCNO]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[DOCNO]"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[DOCNO]"
+                      name="DOCNO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[DELIVERY_ROUTE]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[DELIVERY_ROUTE]"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[DELIVERY_ROUTE]"
+                      name="DELIVERY_ROUTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[CONTACTNAME]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[CONTACTNAME]"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[CONTACTNAME]"
+                      name="CONTACTNAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[UIVALUE]"
+                      dataType="r8"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[UIVALUE]"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[UIVALUE]"
+                      name="UIVALUE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[NAME]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[NAME]"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[NAME]"
+                      name="NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[DOCPARID]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[DOCPARID]"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[DOCPARID]"
+                      name="DOCPARID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[WHENCREATED]"
+                      dataType="dbDate"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[WHENCREATED]"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[WHENCREATED]"
+                      name="WHENCREATED"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[DOCNO]"
+                      dataType="wstr"
+                      length="2000"
+                      name="DOCNO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[DELIVERY_ROUTE]"
+                      dataType="wstr"
+                      length="2000"
+                      name="DELIVERY_ROUTE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[CONTACTNAME]"
+                      dataType="wstr"
+                      length="2000"
+                      name="CONTACTNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[UIVALUE]"
+                      dataType="r8"
+                      name="UIVALUE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[NAME]"
+                      dataType="wstr"
+                      length="2000"
+                      name="NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[DOCPARID]"
+                      dataType="wstr"
+                      length="2000"
+                      name="DOCPARID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].ExternalColumns[WHENCREATED]"
+                      dataType="dbDate"
+                      name="WHENCREATED" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output]"
+                  isErrorOut="true"
+                  name="CData Connect Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[DOCNO]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[DOCNO]"
+                      name="DOCNO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[DELIVERY_ROUTE]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[DELIVERY_ROUTE]"
+                      name="DELIVERY_ROUTE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[CONTACTNAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[CONTACTNAME]"
+                      name="CONTACTNAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[UIVALUE]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[UIVALUE]"
+                      name="UIVALUE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[NAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[NAME]"
+                      name="NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[DOCPARID]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[DOCPARID]"
+                      name="DOCPARID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[WHENCREATED]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[WHENCREATED]"
+                      name="WHENCREATED" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[ErrorDescription]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Error Output].Columns[ErrorDescription]"
+                      name="ErrorDescription" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\CData Connect Source 3"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="support@cdata.com"
+              description="The CData Connect Source easily extracts data from Connect."
+              name="CData Connect Source 3"
+              usesDispositions="true"
+              version="24">
+              <properties>
+                <property
+                  dataType="System.Null"
+                  expressionType="Notify"
+                  name="SQLStatement"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+                <property
+                  dataType="System.Int32"
+                  name="AccessMode"
+                  typeConverter="CData.SSIS.Connect.AccessModeToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="TableOrView"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version= 10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">[SageIntacctLive].[SageIntacct].[Tripsheet Info]</property>
+                <property
+                  dataType="System.Boolean"
+                  name="ExecStoredProcedure">false</property>
+                <property
+                  dataType="System.String"
+                  name="ParameterMapping"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether it will output the string value using Unicode. If true, the data type is DT_WSTR, or the data type is DT_STR."
+                  expressionType="Notify"
+                  name="UseUnicodeString">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">CData.SSIS.Connect.ConnectSource</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\CData Connect Source 3.Connections[CData Connect 2024 Connection]"
+                  connectionManagerID="Package.ConnectionManagers[CData Connect Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[CData Connect Connection Manager]"
+                  description="Use the CData Connect 2024 Connection to connect to Connect."
+                  name="CData Connect 2024 Connection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output]"
+                  name="CData Connect Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[DOCNO]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[DOCNO]"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[DOCNO]"
+                      name="DOCNO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[DELIVERY_ROUTE]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[DELIVERY_ROUTE]"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[DELIVERY_ROUTE]"
+                      name="DELIVERY_ROUTE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[CONTACTNAME]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[CONTACTNAME]"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[CONTACTNAME]"
+                      name="CONTACTNAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[UIVALUE]"
+                      dataType="r8"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[UIVALUE]"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[UIVALUE]"
+                      name="UIVALUE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[NAME]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[NAME]"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[NAME]"
+                      name="NAME"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[DOCPARID]"
+                      dataType="wstr"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[DOCPARID]"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[DOCPARID]"
+                      name="DOCPARID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[WHENCREATED]"
+                      dataType="dbDate"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[WHENCREATED]"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].Columns[WHENCREATED]"
+                      name="WHENCREATED"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[DOCNO]"
+                      dataType="wstr"
+                      length="2000"
+                      name="DOCNO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[DELIVERY_ROUTE]"
+                      dataType="wstr"
+                      length="2000"
+                      name="DELIVERY_ROUTE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[CONTACTNAME]"
+                      dataType="wstr"
+                      length="2000"
+                      name="CONTACTNAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[UIVALUE]"
+                      dataType="r8"
+                      name="UIVALUE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[NAME]"
+                      dataType="wstr"
+                      length="2000"
+                      name="NAME" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[DOCPARID]"
+                      dataType="wstr"
+                      length="2000"
+                      name="DOCPARID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output].ExternalColumns[WHENCREATED]"
+                      dataType="dbDate"
+                      name="WHENCREATED" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output]"
+                  isErrorOut="true"
+                  name="CData Connect Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[DOCNO]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[DOCNO]"
+                      name="DOCNO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[DELIVERY_ROUTE]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[DELIVERY_ROUTE]"
+                      name="DELIVERY_ROUTE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[CONTACTNAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[CONTACTNAME]"
+                      name="CONTACTNAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[UIVALUE]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[UIVALUE]"
+                      name="UIVALUE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[NAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[NAME]"
+                      name="NAME" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[DOCPARID]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[DOCPARID]"
+                      name="DOCPARID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[WHENCREATED]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[WHENCREATED]"
+                      name="WHENCREATED" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[ErrorDescription]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Error Output].Columns[ErrorDescription]"
+                      name="ErrorDescription" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[CONTACTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="CONTACTNAME"
+                      lineageId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[CONTACTNAME]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Customer Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Customer Name]"
+                      name="Customer Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LTRIM]([SUBSTRING](#{Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[CONTACTNAME]},([FINDSTRING](#{Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[CONTACTNAME]},"_",1) &gt; 0 ? [FINDSTRING](#{Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[CONTACTNAME]},"_",1) + 1 : [FINDSTRING](#{Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[CONTACTNAME]},"-",1) + 1),[LEN](#{Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[CONTACTNAME]})))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LTRIM(SUBSTRING(CONTACTNAME,(FINDSTRING(CONTACTNAME,"_",1) &gt; 0 ? FINDSTRING(CONTACTNAME,"_",1) + 1 : FINDSTRING(CONTACTNAME,"-",1) + 1),LEN(CONTACTNAME)))</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Merge Join 1"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[DOCNO]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DOCNO"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DOCNO]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[UIVALUE]"
+                      cachedDataType="r8"
+                      cachedName="UIVALUE"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[UIVALUE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[DELIVERY_ROUTE]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DELIVERY_ROUTE"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DELIVERY_ROUTE]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[CONTACTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="CONTACTNAME"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[CONTACTNAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="NAME"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[NAME]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[DOCPARID]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DOCPARID"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DOCPARID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[WHENCREATED]"
+                      cachedDataType="dbDate"
+                      cachedName="WHENCREATED"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[WHENCREATED]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Right Input].Columns[DOCNO]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DOCNO"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[DOCNO]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[DOCNO]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[DOCNO]"
+                      name="DOCNO"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[DOCNO]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[UIVALUE]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[UIVALUE]"
+                      name="UIVALUE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[UIVALUE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[DELIVERY_ROUTE]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[DELIVERY_ROUTE]"
+                      name="DELIVERY_ROUTE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[DELIVERY_ROUTE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[CONTACTNAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[CONTACTNAME]"
+                      name="CONTACTNAME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[CONTACTNAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[NAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[NAME]"
+                      name="NAME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[DOCPARID]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[DOCPARID]"
+                      name="DOCPARID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[DOCPARID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[WHENCREATED]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[WHENCREATED]"
+                      name="WHENCREATED">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input].Columns[WHENCREATED]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[DOCNO]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DOCNO"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[DOCNO]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[UIVALUE]"
+                      cachedDataType="r8"
+                      cachedName="UIVALUE"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[UIVALUE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[DELIVERY_ROUTE]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DELIVERY_ROUTE"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[DELIVERY_ROUTE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[CONTACTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="CONTACTNAME"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[CONTACTNAME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="NAME"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[NAME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[DOCPARID]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DOCPARID"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[DOCPARID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort.Inputs[Sort Input].Columns[WHENCREATED]"
+                      cachedDataType="dbDate"
+                      cachedName="WHENCREATED"
+                      lineageId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[WHENCREATED]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DOCNO]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DOCNO]"
+                      name="DOCNO"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[DOCNO]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[UIVALUE]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[UIVALUE]"
+                      name="UIVALUE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[UIVALUE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DELIVERY_ROUTE]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DELIVERY_ROUTE]"
+                      name="DELIVERY_ROUTE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[DELIVERY_ROUTE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[CONTACTNAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[CONTACTNAME]"
+                      name="CONTACTNAME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[CONTACTNAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[NAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[NAME]"
+                      name="NAME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DOCPARID]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[DOCPARID]"
+                      name="DOCPARID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[DOCPARID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[WHENCREATED]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\Sort.Outputs[Sort Output].Columns[WHENCREATED]"
+                      name="WHENCREATED">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1].Columns[WHENCREATED]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[DOCNO]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DOCNO"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[DOCNO]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[UIVALUE]"
+                      cachedDataType="r8"
+                      cachedName="UIVALUE"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[UIVALUE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[DELIVERY_ROUTE]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DELIVERY_ROUTE"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[DELIVERY_ROUTE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[CONTACTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="CONTACTNAME"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[CONTACTNAME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="NAME"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[NAME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[DOCPARID]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DOCPARID"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[DOCPARID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 1.Inputs[Sort Input].Columns[WHENCREATED]"
+                      cachedDataType="dbDate"
+                      cachedName="WHENCREATED"
+                      lineageId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[WHENCREATED]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[DOCNO]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[DOCNO]"
+                      name="DOCNO"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[DOCNO]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[UIVALUE]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[UIVALUE]"
+                      name="UIVALUE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[UIVALUE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[DELIVERY_ROUTE]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[DELIVERY_ROUTE]"
+                      name="DELIVERY_ROUTE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[DELIVERY_ROUTE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[CONTACTNAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[CONTACTNAME]"
+                      name="CONTACTNAME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[CONTACTNAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[NAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[NAME]"
+                      name="NAME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[DOCPARID]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[DOCPARID]"
+                      name="DOCPARID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[DOCPARID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[WHENCREATED]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\Sort 1.Outputs[Sort Output].Columns[WHENCREATED]"
+                      name="WHENCREATED">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output].Columns[WHENCREATED]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Sort 3"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 3"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Sort 3.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 3.Inputs[Sort Input].Columns[DOCNO]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DOCNO"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[DOCNO]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 3.Inputs[Sort Input].Columns[DELIVERY_ROUTE]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DELIVERY_ROUTE"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[DELIVERY_ROUTE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 3.Inputs[Sort Input].Columns[CONTACTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="CONTACTNAME"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[CONTACTNAME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 3.Inputs[Sort Input].Columns[UIVALUE]"
+                      cachedDataType="r8"
+                      cachedName="UIVALUE"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[UIVALUE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 3.Inputs[Sort Input].Columns[NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="NAME"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[NAME]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 3.Inputs[Sort Input].Columns[DOCPARID]"
+                      cachedDataType="wstr"
+                      cachedLength="2000"
+                      cachedName="DOCPARID"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[DOCPARID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Sort 3.Inputs[Sort Input].Columns[WHENCREATED]"
+                      cachedDataType="dbDate"
+                      cachedName="WHENCREATED"
+                      lineageId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[WHENCREATED]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Sort 3.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[DOCNO]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[DOCNO]"
+                      name="DOCNO"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[DOCNO]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[DELIVERY_ROUTE]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[DELIVERY_ROUTE]"
+                      name="DELIVERY_ROUTE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[DELIVERY_ROUTE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[CONTACTNAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[CONTACTNAME]"
+                      name="CONTACTNAME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[CONTACTNAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[UIVALUE]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[UIVALUE]"
+                      name="UIVALUE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[UIVALUE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[NAME]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[NAME]"
+                      name="NAME">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[NAME]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[DOCPARID]"
+                      dataType="wstr"
+                      length="2000"
+                      lineageId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[DOCPARID]"
+                      name="DOCPARID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[DOCPARID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[WHENCREATED]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task\Sort 3.Outputs[Sort Output].Columns[WHENCREATED]"
+                      name="WHENCREATED">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output].Columns[WHENCREATED]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Aggregate Output 1]"
+              endId="Package\Data Flow Task\Sort.Inputs[Sort Input]"
+              name="Aggregate Output 1"
+              startId="Package\Data Flow Task\Aggregate 1.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Data Flow Task.Paths[CData Connect Source Output]"
+              endId="Package\Data Flow Task\Aggregate 1.Inputs[Aggregate Input 1]"
+              name="CData Connect Source Output"
+              startId="Package\Data Flow Task\CData Connect Source 3.Outputs[CData Connect Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[CData Connect Source Output1]"
+              endId="Package\Data Flow Task\Sort 3.Inputs[Sort Input]"
+              name="CData Connect Source Output"
+              startId="Package\Data Flow Task\CData Connect Source 2.Outputs[CData Connect Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Right Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Merge Join Output]"
+              endId="Package\Data Flow Task\Sort 1.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\Data Flow Task\Merge Join 1.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output]"
+              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort 3.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output1]"
+              endId="Package\Data Flow Task\Merge Join 1.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Sort Output2]"
+              endId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task\Sort 1.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{AEBFA15C-5607-4BEB-A291-A1CCC69B85F2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3476643F-CA34-412A-B393-B1DF2AE5CDE4}"
+          SQLTask:SqlStatementSource="DELETE FROM [dbo].[Tripsheet Invoices] &#xA;WHERE [Invoice Date] = CAST(GETDATE() AS DATE);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C932F704-C2A3-4993-AFA5-57D803B5EF1D}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C02CC703-04DA-404C-B545-18B7FD079627}"
+      DTS:From="Package\Data Flow Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Analysis Services Processing Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="236.8,41.6"
+          Id="Package\Analysis Services Processing Task"
+          TopLeft="446,296" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="292.857143480559,194.235293947392" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="105.000000223517,84.8823528667738" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="186.200000223517,126.482352866774">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="181.857143257041,67.7529410806185"
+              Start="0,0"
+              End="181.857143257041,60.2529410806185">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.8764705403093" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.8764705403093"
+                    Point2="0,33.8764705403093"
+                    Point3="4,33.8764705403093" />
+                  <mssgle:LineSegment
+                    End="177.857143257041,33.8764705403093" />
+                  <mssgle:CubicBezierSegment
+                    Point1="177.857143257041,33.8764705403093"
+                    Point2="181.857143257041,33.8764705403093"
+                    Point3="181.857143257041,37.8764705403093" />
+                  <mssgle:LineSegment
+                    End="181.857143257041,60.2529410806185" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="367.857143480559,236.235293947392">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="196.642856519441,59.764706052608"
+              Start="0,0"
+              End="196.642856519441,52.264706052608">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.882353026304" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.882353026304"
+                    Point2="0,29.882353026304"
+                    Point3="4,29.882353026304" />
+                  <mssgle:LineSegment
+                    End="192.642856519441,29.882353026304" />
+                  <mssgle:CubicBezierSegment
+                    Point1="192.642856519441,29.882353026304"
+                    Point2="196.642856519441,29.882353026304"
+                    Point3="196.642856519441,33.882353026304" />
+                  <mssgle:LineSegment
+                    End="196.642856519441,52.264706052608" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <ConnectionManager
+    design-time-name="Package.ConnectionManagers[EFEDCPASTEL01.Agro-Serve_TripSheet_SSAS]">
+    <ProjectReferenceName></ProjectReferenceName>
+  </ConnectionManager>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="107.2,41.6"
+          Id="Package\Data Flow Task\Sort 3"
+          TopLeft="1084,207" />
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="1063,337" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Data Flow Task\CData Connect Source 3"
+          TopLeft="726,73" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Data Flow Task\CData Connect Source 2"
+          TopLeft="1036,70" />
+        <NodeLayout
+          Size="136,41.6"
+          Id="Package\Data Flow Task\Aggregate 1"
+          TopLeft="754,201" />
+        <NodeLayout
+          Size="107.2,41.6"
+          Id="Package\Data Flow Task\Sort 1"
+          TopLeft="913,590" />
+        <NodeLayout
+          Size="139.2,41.6"
+          Id="Package\Data Flow Task\Merge Join 1"
+          TopLeft="892,470" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Data Flow Task\Sort"
+          TopLeft="775,323" />
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\Data Flow Task\ADO NET Destination"
+          TopLeft="879,704" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output2]"
+          TopLeft="967.5,632">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72"
+              Start="0,0"
+              End="0,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output1]"
+          TopLeft="824,365">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="137.5,105"
+              Start="0,0"
+              End="137.5,97.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,48.5"
+                    Point2="0,52.5"
+                    Point3="4,52.5" />
+                  <mssgle:LineSegment
+                    End="133.5,52.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="133.5,52.5"
+                    Point2="137.5,52.5"
+                    Point3="137.5,56.5" />
+                  <mssgle:LineSegment
+                    End="137.5,97.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Sort Output]"
+          TopLeft="1138.75,249">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,88"
+              Start="0,0"
+              End="0,80.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,80.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Merge Join Output]"
+          TopLeft="964,512">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78"
+              Start="0,0"
+              End="0,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="1140,379">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-156.666666666667,91"
+              Start="0,0"
+              End="-156.666666666667,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.9786628733997" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,49.9786628733997"
+                    Point2="0,53.9786628733997"
+                    Point3="-4,53.9786628733997" />
+                  <mssgle:LineSegment
+                    End="-152.666666666667,53.9786628733997" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-152.666666666667,53.9786628733997"
+                    Point2="-156.666666666667,53.9786628733997"
+                    Point3="-156.666666666667,57.9786628733997" />
+                  <mssgle:LineSegment
+                    End="-156.666666666667,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[CData Connect Source Output1]"
+          TopLeft="1135,112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,95"
+              Start="0,0"
+              End="0,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[CData Connect Source Output]"
+          TopLeft="822.25,115">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86"
+              Start="0,0"
+              End="0,78.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Aggregate Output 1]"
+          TopLeft="823,243">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80"
+              Start="0,0"
+              End="0,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\CData Connect Source 3">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\CData Connect Source 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
