@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">EFEDCPBI01</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPhMinj4WXEiec7K7cs+fmwAAAAACAAAAAAADZgAAwAAAABAAAACoSVVsQnf/oKcDIkPwc0SuAAAAAASAAACgAAAAEAAAAI6HsRXhOuES9H/5GMCzIdKIAAAAy0kI4K4zGBFTsFWIN8k0pGK1g308QwjW1w7NBojgLir+ElGGbHNDMFF8wRuZYu0rBX3QwXtCii+hJqLcREdwA9u2DGM8V50vwTRlRzMikQpM0cK6Am2uCvOXokw52zswLZiTQfRZu6lJRK0TvwsmAo7it+O+bTtT3iBwbKRJC7NQXqGOWhpHTRQAAABXwJ7koHPsZhPHyuzLeoC5SawBXQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAPhMinj4WXEiec7K7cs+fmwAAAAACAAAAAAADZgAAwAAAABAAAAAoAxMNUN4albdSt2lBArCZAAAAAASAAACgAAAAEAAAABCvGBz5F7OyUxFv0GqrFB+IAAAApscxAGDQfBKnYcJMsEam2CmaEVwFG22IfwUPF7sUqW5V9Bwcj3TgzUCmy0bdl7b4uG/v91ZxQKab4mJoQknzYSFjIwJ73CHmt8FlphHu31vzkYfqBCGK9AP7sVb21DYlJCWjt2BVsoJNz16O6gpuQ9YrWb0Y3LgRT2hj9CU9C0u7wSE19h3KExQAAACaGpDGTpMZ1WEcQbJTkfrk0m46xw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -42,10 +42,10 @@
                 <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">46</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">74</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{63F793BB-B81A-40D3-BAC5-69448B682111}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{8E05FF3C-5ADE-41A9-9A8F-8C51F1FA1E91}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -215,7 +215,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">auth scheme=OAuth;client jwt cert type=USER;client jwt validity time=3600;firewall port=0;firewall type=NONE;initiate oauth=GETANDREFRESH;logfile="C:\Users\IOCO_1\OneDrive - AgroServe Pty Ltd\Desktop\Cdata Logs\Limit 1000.txt";max log file count=-1;max log file size=100MB;max rows=-1;max rows timeout=30;oauth settings location="%APPDATA%\CData\Connect Data Provider\OAuthSettings.txt";proxy auth scheme=BASIC;proxy auto detect=True;proxy port=80;proxy ssl type=AUTO;query passthrough=True;stream max rows=5000;timeout=60;url=https://cloud.cdata.com/api;user=nassau.carstens@agroserve.co.za;use stream mode=True;verbosity=3</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">auth scheme=OAuth;client jwt cert type=USER;client jwt validity time=3600;firewall port=0;firewall type=NONE;initiate oauth=GETANDREFRESH;logfile=C:\Users\IOCO_1\source\dispatchlog.txt;max log file count=-1;max log file size=100MB;max rows=-1;max rows timeout=30;oauth settings location="%APPDATA%\CData\Connect Data Provider\OAuthSettings.txt";proxy auth scheme=BASIC;proxy auto detect=True;proxy port=80;proxy ssl type=AUTO;query passthrough=True;stream max rows=5000;timeout=60;url=https://cloud.cdata.com/api;user=nassau.carstens@agroserve.co.za;use stream mode=True;verbosity=5</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -353,7 +353,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">C:\Users\IOCO_1\OneDrive - AgroServe Pty Ltd\Desktop\Cdata Logs\Limit 1000.txt</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">C:\Users\IOCO_1\source\dispatchlog.txt</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -790,7 +790,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">3</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">5</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
